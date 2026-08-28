@@ -41,14 +41,17 @@ def rotate_matrix_90(matrix):
     Returns:
         회전된 2차원 리스트
     """
+    # 배열의 길이 NxN이기때문에 이차원배열이여도 matrix배열 길이만 알면됨
     n = len(matrix)
     
     # TODO: n x n 크기의 새로운 배열을 생성하세요 (0으로 초기화)
-    pass
+    rotated = [[0]*n for _ in range(n)]
         
     # TODO: 원본 배열의 각 요소를 회전된 위치에 배치하세요
     # 힌트: (i, j) 위치의 요소는 회전 후 (j, n-1-i) 위치로 이동
-    pass
+    for i in range(n):
+        for j in range(n):
+            rotated[j][n-1-i] = matrix[i][j]
     
     return rotated
 
