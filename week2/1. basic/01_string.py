@@ -34,14 +34,33 @@ def is_palindrome(s):
     Returns:
         bool: 회문이면 True, 아니면 False
     """
+
+    # isalnum() 문자열이 전부 알파벳(영어, 한글)이나 숫자로만 이루어져있는지 판별후 True, Flase 반환
     filtered = ''.join(char.lower() for char in s if char.isalnum())
-    
+
+    # 방법1 - 문자열 뒤집어서 비교
+    """
+    if filtered[::-1] == filtered:
+        return True
+    else:
+        return False
+    """
+    # 방법2 - 양 끝 인덱스를 이용한 투 포인터 방식
+    s_p = 0
+    e_p = len(filtered)-1
+    while s_p<e_p:
+        if filtered[s_p] == filtered[e_p]:
+            s_p += 1
+            e_p -= 1
+        else:
+            return False
+    return True
+
     # TODO: 정제된 문자열이 회문인지 확인하세요
     # 방법1: 문자열을 뒤집어서 비교 ([::-1] 사용)
     # 방법2: 양 끝 인덱스를 이용한 투 포인터 방식
-    pass
     
-    #return False
+    
 
 # 테스트 케이스
 if __name__ == "__main__":
