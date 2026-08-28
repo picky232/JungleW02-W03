@@ -36,8 +36,14 @@ def is_palindrome(s):
         bool: 회문이면 True, 아니면 False
     """
 
-    # isalnum() 문자열이 전부 알파벳(영어, 한글)이나 숫자로만 이루어져있는지 판별후 True, Flase 반환
-    filtered = ''.join(char.lower() for char in s if char.isalnum())
+    # isalnum() 문자열이 전부 알파벳(영어, 한글)이나 숫자로만 이루어져있는지 판별후 True, Flase 반환 
+    filter_s = ""
+    for i in s:
+        if i.isalnum():
+            filter_s+=i.lower()
+
+
+    # filtered = ''.join(char.lower() for char in s if char.isalnum())
 
     # 방법1 - 문자열 뒤집어서 비교
     """
@@ -48,9 +54,9 @@ def is_palindrome(s):
     """
     # 방법2 - 양 끝 인덱스를 이용한 투 포인터 방식
     s_p = 0
-    e_p = len(filtered)-1
+    e_p = len(filter_s)-1
     while s_p<e_p:
-        if filtered[s_p] == filtered[e_p]:
+        if filter_s[s_p] == filter_s[e_p]:
             s_p += 1
             e_p -= 1
         else:
