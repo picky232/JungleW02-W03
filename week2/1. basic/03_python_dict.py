@@ -46,7 +46,7 @@ def find_above_average_students(students):
     # 한번에 계산
     # students 배열에서 한원소를 가져와서 원소안['score']키값의 밸류를 뽑아 평균을 구한 식
     average = sum([score['score'] for score in students])/len(students)
-    
+
     # TODO: 평균 점수를 계산하세요
     pass
     
