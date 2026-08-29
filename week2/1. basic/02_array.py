@@ -49,7 +49,6 @@ def rotate_matrix_90(matrix):
     #
     # TODO: 원본 배열의 각 요소를 회전된 위치에 배치하세요
     # 힌트: (i, j) 위치의 요소는 회전 후 (j, n-1-i) 위치로 이동
-    for i in range(n):
     ##
     # 90도 돌렸을때
     # for i in range(n):
