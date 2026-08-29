@@ -14,11 +14,11 @@
 
 예제:
 입력: n = 5
-팩토리얼 출력: 120 (5! = 5 × 4 × 3 × 2 × 1)
+팩토리얼 출력: 120 (5! = 5 x 4 x 3 x 2 x 1)
 피보나치 출력: 5 (0, 1, 1, 2, 3, 5)
 
 힌트:
-- 팩토리얼: n! = n × (n-1)!, 0! = 1
+- 팩토리얼: n! = n x (n-1)!, 0! = 1
 - 피보나치: fib(n) = fib(n-1) + fib(n-2), fib(0) = 0, fib(1) = 1
 """
 
@@ -34,7 +34,10 @@ def factorial(n):
     """
     # TODO: base case를 작성하세요
     # n이 0이거나 1이면 1을 반환
-    pass
+    if n < 1: # 0! = 1
+        return 1
+
+    return n*factorial(n-1)
     
     # TODO: recursive case를 작성하세요
     pass
@@ -51,7 +54,7 @@ def fibonacci(n):
     """
     # TODO: base case를 작성하세요
     # n이 0이면 0, n이 1이면 1 반환
-    pass
+    
     
     # TODO: recursive case를 작성하세요
     pass
