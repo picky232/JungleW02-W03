@@ -20,7 +20,7 @@ class stack:
         for i in range(self.pointer):
             self.data.pop()
 
-    def peek(self):
+    def peek(self): # 맨 위 데이터깂 출력
         print(self.data[-1])
 
 
