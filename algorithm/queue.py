@@ -14,7 +14,7 @@ class queue:
         return out_data
 
     def isEmpty(self): # 비엇는지 확인
-        return bool(self.data) # 확인후 bool 연산자 반환
+        return not bool(self.data) # 확인후 bool 연산자 반환
 
     def peak(self): # 맨앞 값 반환
         return self.data[self.front]
