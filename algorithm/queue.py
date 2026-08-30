@@ -6,11 +6,11 @@ class queue:
 
     def enqueue(self, value):
         self.data.append(value)
-        rear += 1
+        self.rear += 1
 
     def dequeue(self):
         out_data = self.data[self.front]
-        front += 1
+        self.front += 1
         return out_data
 
     def isEmpty(self):
@@ -23,4 +23,27 @@ class queue:
         self.data = []
         self.front = 0
         self.rear = 0
-        
+
+    def show(self):
+        for i in range(self.front, self.rear):
+            print(self.data[i], end=" ")
+
+
+q1 = queue()
+
+print(q1.isEmpty())
+
+q1.enqueue(10)
+q1.enqueue(20)
+q1.enqueue(30)
+q1.enqueue(40)
+q1.show()
+
+print(q1.dequeue())
+q1.show()
+print(q1.front, q1.rear)
+
+print(q1.peak())
+
+q1.clear()
+q1.show()
