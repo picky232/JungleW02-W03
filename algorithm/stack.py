@@ -25,7 +25,7 @@ class stack:
 
 
 stack1 = stack()
-stack1.show()
+stack1.show() 
 stack1.push(1)
 stack1.push(2)
 stack1.push(3)

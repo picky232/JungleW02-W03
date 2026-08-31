@@ -14,7 +14,7 @@ class queue:
         return out_data
 
     def isEmpty(self): # 비엇는지 확인
-        return not bool(self.data) # 확인후 bool 연산자 반환
+        return not bool(self.data[self.front:]) # 확인후 bool 연산자 반환
 
     def peak(self): # 맨앞 값 반환
         return self.data[self.front]
@@ -30,21 +30,21 @@ class queue:
         print()
 
 
-q1 = queue()
+# q1 = queue()
 
-print(q1.isEmpty())
+# print(q1.isEmpty())
 
-q1.enqueue(10)
-q1.enqueue(20)
-q1.enqueue(30)
-q1.enqueue(40)
-q1.show()
+# q1.enqueue(10)
+# q1.enqueue(20)
+# q1.enqueue(30)
+# q1.enqueue(40)
+# q1.show()
 
-print(q1.dequeue())
-q1.show()
-print(q1.front, q1.rear)
+# print(q1.dequeue())
+# q1.show()
+# print(q1.front, q1.rear)
 
-print(q1.peak())
+# print(q1.peak())
 
-q1.clear()
-q1.show()
+# q1.clear()
+# q1.show()
