@@ -30,11 +30,18 @@ def find_duplicates_brute_force(nums):
     """
     duplicates = []
     n = len(nums)
+    for i in range(n):
+        for j in range(i+1, n):
+            # print(nums[i], nums[j])
+            if nums[i] == nums[j]:
+                # print("1")
+                if nums[i] not in duplicates:
+                    duplicates.append(nums[i])
+    # print(duplicates)
     
     # TODO: 이중 반복문으로 중복 찾기
     ## i번째 원소와 i+1 이후의 모든 원소를 비교
     ## 같은 원소를 찾으면 duplicates에 추가 (중복 추가 방지 필요)
-    pass
     
     return duplicates
 
