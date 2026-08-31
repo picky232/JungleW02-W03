@@ -172,7 +172,7 @@ def combinations(n: int, k: int) -> list:
             # backtrack(..., current_combination)
             # current_combination.pop()
             current_combination.append(num)
-            print(num+1, current_combination)
+            # print(num+1, current_combination)
             backtrack(num+1, current_combination)
             current_combination.pop()
 
