@@ -37,7 +37,12 @@ def gcd(a, b):
     # TODO: 유클리드 호제법 구현
     # base case: b가 0이면 a 반환
     # recursive를 이용 
-    pass
+    if b==0:
+        return a
+    if a<b:
+        a, b = b, a
+    # print(a, b)
+    return gcd(b, a%b)
 
 def gcd_iterative(a, b):
     """
