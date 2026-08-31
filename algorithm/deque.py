@@ -7,6 +7,8 @@ class circledeque:
 
     # 맨뒤 삽입
     def enqueue(self, value):
+        if self.size == len(self.data):
+            return print("덱이 가득참")
         self.data[self.rear] = value
         self.rear = (self.rear+1)%len(self.data)
         self.size += 1
@@ -15,6 +17,8 @@ class circledeque:
     # Python에서는 음수를 % 연산하면 결과가 나머지의 기준인 
     # 오른쪽 피연산자에 맞춰 양수가 될 수 있음
     def frontAdd(self, value):
+        if self.size == len(self.data):
+            return print("덱이 가득참")
         self.front = (self.front-1)%len(self.data) 
         # (0-1) % 5 = 4
         self.data[self.front] = value
@@ -22,6 +26,8 @@ class circledeque:
 
     # 맨앞 추출
     def dequeue(self):
+        if self.size == 0:
+            return print("덱이 비었음")
         out = self.data[self.front]
         self.data[self.front] = None
         self.front = (self.front+1)%len(self.data)
@@ -30,6 +36,8 @@ class circledeque:
 
     # 맨뒤 추출
     def rearOut(self):
+        if self.size == 0:
+            return print("덱이 비었음")
         out = self.data[self.rear-1]
         self.data[self.rear-1] = None
         self.rear = (self.rear-1)%len(self.data)

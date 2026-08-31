@@ -121,7 +121,7 @@ def combinations(n: int, k: int) -> list:
     """
     result = []  # 완성된 조합을 모아 둘 곳
 
-    def backtrack(start: int, current_combination: list) -> None:
+    def backtrack(start: int, current_combination: list) -> None: # 읽는 사람에게 argument 타입 알려주려고
         """
         재귀(백트래킹) 헬퍼 함수.
 
@@ -139,12 +139,15 @@ def combinations(n: int, k: int) -> list:
         # - 왜 복사본?  current_combination 은 이후 .append/.pop 으로 계속 변하기
         #   때문에 그대로 넣으면 모든 조합이 같은 객체를 가리키게 됩니다.
         # - 복사본 만드는 방법: list(current_combination)  또는 current_combination[:]
-        #
+
         # TODO(Level 1): 아래 두 줄을 직접 작성하세요.
         # if len(current_combination) == ...:
         #     result.append(...)
         #     return
-        pass  
+        
+        if len(current_combination) == k:
+          result.append(list(current_combination))
+          return
 
         # ──────────────────────────────────────────────────────────────────
         # [Level 2] 가지치기 반복문
@@ -154,7 +157,7 @@ def combinations(n: int, k: int) -> list:
         # - 반복문 변수 이름은 num 으로 추천 (의미: "이번에 고를 숫자").
         #
         # TODO(Level 2): 아래 한 줄을 작성하세요.
-        pass
+        for num in range(start, n+1):
 
             # ──────────────────────────────────────────────────────────────
             # [Level 3] 백트래킹 3단계
@@ -168,10 +171,15 @@ def combinations(n: int, k: int) -> list:
             # current_combination.append(...)
             # backtrack(..., current_combination)
             # current_combination.pop()
+            current_combination.append(num)
+            print(num+1, current_combination)
+            backtrack(num+1, current_combination)
+            current_combination.pop()
 
     # 처음 호출: 시작 숫자는 1, 지금까지 고른 숫자는 비어 있음
     backtrack(1, [])
     return result
+
 
 
 # ============================================================================
