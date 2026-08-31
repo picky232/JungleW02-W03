@@ -56,7 +56,13 @@ def gcd_iterative(a, b):
     """
     # TODO: 반복문으로 구현
     # b가 0이 될 때까지 반복
-    pass
+    if a<b:
+        a,b = b,a
+    while True:
+        if b == 0:
+            break
+        a, b = b, a%b
+    return a
 
 def lcm(a, b):
     """
@@ -69,7 +75,7 @@ def lcm(a, b):
         최소공배수
     """
     # TODO: LCM 계산
-    pass
+    return a*b//gcd(a, b)
 
 def extended_gcd(a, b):
     """
