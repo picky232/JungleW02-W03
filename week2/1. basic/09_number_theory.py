@@ -92,11 +92,18 @@ def extended_gcd(a, b):
     # base case: b가 0이면 (a, 1, 0) 반환    
     # recursive case
     # 역추적하며 x, y 계산
-    pass
+    if b == 0:
+        return a, 1, 0
+    r_gcd, x, y = extended_gcd(b, a%b)
+
+    x1 = y
+    y1 = x - (a//b) * y
+    return r_gcd, x1, y1
+    
 
 def is_prime(n):
     """
-    소수 판별
+    소수 판별   ``
     
     Args:
         n: 판별할 양의 정수
@@ -108,7 +115,26 @@ def is_prime(n):
     # n이 2보다 작으면 False
     # 2부터 sqrt(n)까지 나누어 떨어지는지 확인    
     # 3부터 sqrt(n)까지 홀수만 확인
-    pass 
+    from math import sqrt
+    if n<2:
+        return False
+    elif n == 2:
+        return True
+    else:
+        # 소수는 1, 자기자신을 약수로 가짐
+        # n에 루트를 씌우면 나오는 수는 n의 약수중
+        # n보다 작거나 같은 약수임 따라서 이수로 나뉘게 되면 n보다 큰 약수가 나오기 때문에
+        # 굳이 n까지 안돌려봐도 답을 구할수 있음
+        n_sqrt = int(sqrt(n))+1 
+        # print(n_sqrt)
+        if n % 2 == 0:
+            return False
+        else:
+            for i in range(3, n_sqrt, 2):
+                # print(i)
+                if n%i == 0:
+                    return False
+            return True
 
 # 테스트 케이스
 if __name__ == "__main__":
