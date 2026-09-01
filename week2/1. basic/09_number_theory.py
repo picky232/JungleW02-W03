@@ -93,7 +93,7 @@ def extended_gcd(a, b):
     # recursive case
     # 역추적하며 x, y 계산
     if b == 0:
-        return a, 1, 0
+        return a, 1, 0 # 초기값 a=gcd, b=0일때 종료됨으로 ax+bx=gcd일떄 1, 0이 각각 x, y의 계수가됨
     r_gcd, x, y = extended_gcd(b, a%b)
 
     x1 = y
