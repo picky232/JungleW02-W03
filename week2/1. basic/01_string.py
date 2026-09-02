@@ -35,13 +35,23 @@ def is_palindrome(s):
     Returns:
         bool: 회문이면 True, 아니면 False
     """
+    check = ""
+    for char in s:
+        if char.isalnum():
+            check+=char.lower()
+    # print(check)
+    # print(check[::-1])
+    if check == check[::-1]:
+        return True
+    else:
+        return False
 
     # isalnum() 문자열이 전부 알파벳(영어, 한글)이나 숫자로만 이루어져있는지 판별후 True, Flase 반환 
-    filter_s = ""
-    for i in s:
-        if i.isalnum(): # isalnum()으로 판별
-            filter_s+=i.lower() # 소문자 상태로 변환 - 계속쓰니까 함수를 계속 호출해야함 불필요한 함수호출 많음
-    result_filter = filter_s.lower() #마지막에만 lower()써서 대소문자 변환하면 됨
+    # filter_s = ""
+    # for i in s:
+    #     if i.isalnum(): # isalnum()으로 판별
+    #         filter_s+=i.lower() # 소문자 상태로 변환 - 계속쓰니까 함수를 계속 호출해야함 불필요한 함수호출 많음
+    # result_filter = filter_s.lower() #마지막에만 lower()써서 대소문자 변환하면 됨
 
 
     # filtered = ''.join(char.lower() for char in s if char.isalnum())
@@ -54,16 +64,16 @@ def is_palindrome(s):
         return False
     """
     # 방법2 - 양 끝 인덱스를 이용한 투 포인터 방식
-    s_p = 0
-    e_p = len(result_filter)-1
-    while s_p < e_p:
-        if result_filter[s_p] == result_filter[e_p]: # start, end 포인터위치 글자 확인
-            # 맞으면 포인터 각각 start+1 end-1함
-            s_p += 1
-            e_p -= 1
-        else:
-            return False
-    return True
+    # s_p = 0
+    # e_p = len(result_filter)-1
+    # while s_p < e_p:
+    #     if result_filter[s_p] == result_filter[e_p]: # start, end 포인터위치 글자 확인
+    #         # 맞으면 포인터 각각 start+1 end-1함
+    #         s_p += 1
+    #         e_p -= 1
+    #     else:
+    #         return False
+    # return True
 
     # TODO: 정제된 문자열이 회문인지 확인하세요
     # 방법1: 문자열을 뒤집어서 비교 ([::-1] 사용)
