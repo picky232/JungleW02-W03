@@ -44,16 +44,18 @@ def preorder(root):
     result = []
     
     # TODO: root가 None이면 빈 리스트 반환
-    pass
+    if root == None:
+        return []
     
     # TODO: 루트 값 추가
-    pass
+    result.append(root.value)
     
     # TODO: 왼쪽 서브트리 순회
-    pass
+    result+=preorder(root.left)
+    # result.extend(preorder(root.left)) 이것도 가능 extend가 배열을 풀어서 원소들을 넣어줌
     
     # TODO: 오른쪽 서브트리 순회
-    pass
+    result+=preorder(root.right)
     
     return result
 
@@ -62,16 +64,20 @@ def inorder(root):
     result = []
     
     # TODO: root가 None이면 빈 리스트 반환
-    pass
+    if root == None:
+        return []
     
     # TODO: 왼쪽 서브트리 순회
-    pass
+    result += inorder(root.left)
+    # print(result)
     
     # TODO: 루트 값 추가
-    pass
+    result.append(root.value)
+    # print(result)
     
     # TODO: 오른쪽 서브트리 순회
-    pass
+    result+=inorder(root.right)
+    # print(result)
     
     return result
 
@@ -80,16 +86,18 @@ def postorder(root):
     result = []
     
     # TODO: root가 None이면 빈 리스트 반환
-    pass
-    
+    if root == None:
+        return []
     # TODO: 왼쪽 서브트리 순회
-    pass
+    result.extend(postorder(root.left))
     
     # TODO: 오른쪽 서브트리 순회
-    pass
+    result.extend(postorder(root.right))
+    # print(result)
     
     # TODO: 루트 값 추가
-    pass
+    # print(root.value)
+    result.append(root.value)
     
     return result
 
