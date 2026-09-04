@@ -53,7 +53,7 @@ def dfs(graph, start, visited=None):
     # TODO: 인접한 정점들에 대해 재귀
     ## 방문하지 않은 정점이면 재귀 호출
     for i in graph[start]:
-        print(start, visited)
+        # print(start, visited)
         if i not in visited:
             dfs(graph, i, visited)
     
