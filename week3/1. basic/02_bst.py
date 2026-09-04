@@ -60,9 +60,9 @@ def search_bst(root, target):
     if root.value == target:
         return True
     if root.value > target:
-        return search_bst(root.left, target)
+        return search_bst(root.left, target) # 왼쪽노드로 이동 후 탐색
     if root.value < target:
-        return search_bst(root.right, target)
+        return search_bst(root.right, target) # 오른쪽 노드로 이동후 탐색
     
     
 
