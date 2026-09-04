@@ -43,7 +43,7 @@ def bfs(graph, start):
     Returns:
         방문 순서 리스트
     """
-    visited = [start]
+    visited = [start] # 시작값 넣기
     
     # TODO: 큐 생성 및 시작 정점 추가
     ## 방문한 정점 집합
@@ -58,12 +58,12 @@ def bfs(graph, start):
     while que:
         # print("que: ",que)
         # print("visitied: ",visited)
-        out = que.popleft()
+        out = que.popleft() # que에서 노드
         # print(out)
-        for i in graph[out]:
-            if i not in visited:
-                visited.append(i)
-                que.append(i)
+        for i in graph[out]: # 인접노드 탐색
+            if i not in visited: # 방문안했으면
+                visited.append(i) # 방문에 추가
+                que.append(i) # 큐에도 추가
     return visited
 
 # 테스트 케이스
