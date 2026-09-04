@@ -86,7 +86,10 @@ def fibonacci_memo(n, memo=None):
         memo = {}
     
     # TODO: base case 
-    if n<=2:
+    if n==0:
+        memo.update({n:0})
+        return memo[n]
+    if n==1:
         memo.update({n:1})
         return memo[n] 
     
