@@ -47,14 +47,23 @@ def bfs(graph, start):
     
     # TODO: 큐 생성 및 시작 정점 추가
     ## 방문한 정점 집합
-    pass
+    que = deque([start])
+    # print(que)
 
     # TODO: 큐가 빌 때까지 반복
     ## 큐에서 정점 꺼내기
     ## 인접한 정점들 확인
     ## 방문하지 않은 정점이면 큐에 추가
-    pass
-    
+    while que:
+        # print("que: ",que)
+        # print("visitied: ",visited)
+        out = que.popleft()
+        # print(out)
+        for i in graph[out]:
+            if i not in visited:
+                que.append(i)
+        if out not in visited:
+            visited.append(out)
     return visited
 
 # 테스트 케이스
