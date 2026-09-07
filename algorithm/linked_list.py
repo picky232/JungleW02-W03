@@ -120,10 +120,13 @@ class DLinkedList:
 
     def findNode(self, pos):
         node = self.head
+        print("head",node.data)
         idx = 0
         while idx!=pos:
             idx+=1
             node = node.next
+            print("idx:", idx)
+            print(node.data)
         return node # 값이 elem인 노드
 
     def push(self, elem): # 마지막에 노드 삽입
@@ -132,9 +135,9 @@ class DLinkedList:
             self.head = node
             self.tail = node
         else: # 값이 있을때
-            self.tail.next = node
-            node.prev = self.tail.next
-            self.tail = node
+            node.prev = self.tail # 노드의 prev를 추가전 tail에 연결
+            self.tail.next = node # tail의 next를 node로 연결
+            self.tail = node # tail 변경
 
     def display(self, msg="LinkedList"):
         print(msg)
@@ -145,18 +148,44 @@ class DLinkedList:
         print("")
 
     def insert(self, elem, pos):
-        node = DNode(elem)
-        if self.isEmpty():
+        node = DNode(elem) # 노드 생성
+        if self.isEmpty(): # 연결리스트가 비었을경우
             self.head = node
             self.tail = node
+            return
+        gijon_node = self.findNode(pos) # pos위치 노드
+
+        node.next = gijon_node.next # 새 노드 next 연결
+        node.prev = gijon_node # 새 노드 prev 연결
+            
+        if gijon_node.next == None: # 기존노드가 맨끝 노드 일때
+            self.tail = node # tail 변경
+        else: # 증간 노드일때
+            gijon_node.next.prev = node # 기존 노드의 다음노드의 prev
+        gijon_node.next = node # 기존 노드의 next를 node로 변경
+
+    def delete(self, pos): # 삭제
+        if self.isEmpty():
+            return None
+        node = self.findNode(pos)
+        print(node.data)
+        # 첫번째 노드
+        if node.prev == None:
+            self.head = node.next # 링크드 리스트의 헤드 다음노드로 변경
+            if self.head != None: # 변경한 head가 None이 아니면
+                self.head.prev = None # 변경한 head의 prev None 변경
+            else: # 헤드노드만 있었는데 지워서 노드가 없을때
+                self.tail = None
+        # 마지막 노드
+        elif node.next == None:
+            self.tail = node.prev
+            self.tail.next = None
+        # 중간 노드
         else:
-            gijon_node = self.findNode(pos)
-            if gijon_node.next == None:
-                node.next = None
-            else:
-                node.next = gijon_node.next
-            gijon_node.next = node
-            node.prev = gijon_node
+            node.prev.next = node.next
+            node.next.prev = node.prev
+        return node.data
+
 
 s = DLinkedList()
 s.display("양방향 연결리스트로 구현한 리스트(초기상태):")
@@ -169,3 +198,6 @@ s.display("삽입 5개")
 
 s.insert(10, 2)
 s.display("insert")
+print(s.delete(0))
+print(s.delete(1))
+s.display("0 [10], 1 [30] 삭제")
