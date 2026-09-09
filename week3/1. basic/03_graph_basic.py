@@ -40,27 +40,17 @@ def create_graph(vertices, edges, directed=False):
     Returns:
         그래프 딕셔너리
     """
-    # TODO: 빈 그래프 초기화
     graph = {}
+    for i in range(vertices):
+        graph[i] = []
 
-    # TODO: 간선 추가
-    ## 간선 추가 (u에서 v로)
-    ## 무방향 그래프면 반대 방향도 추가
-
-    # 시간복잡도 개선 n^2 -> n
-    for i, j in edges:
-        if i not in graph:
-            graph.update({i:[]})
-        if j not in graph:
-            graph.update({j:[]})
-
-    if not directed:
-        for i, j in edges:
+    if directed:
+        for i, j in edges: # 방향
+            graph[i].append(j)
+    else:
+        for i, j in edges: # 무뱡향
             graph[i].append(j)
             graph[j].append(i)
-    else:
-        for i,j in edges:
-            graph[i].append(j)
     return graph
 
 # 테스트 케이스
