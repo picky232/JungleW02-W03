@@ -42,23 +42,17 @@ def dfs(graph, start, visited=None):
     Returns:
         방문 순서 리스트
     """
-    # TODO: visited가 None이면 초기화
+    
     if visited == None:
         visited = []
-    
-    # TODO: 현재 정점 방문
-    visited.append(start)
+    visited.append(start) # 노드 삽입
+    for i in graph[start]: # 노드와 연결된 노드 확인
+        if i not in visited: # 방문했는지 확인
+            dfs(graph, i, visited) # 방문안했으면 start값을 i로 변경하여 재귀
 
-        
-    # TODO: 인접한 정점들에 대해 재귀
-    ## 방문하지 않은 정점이면 재귀 호출
-    for i in graph[start]:
-        # print(start, visited)
-        if i not in visited:
-            dfs(graph, i, visited)
-    
+    # 중요한건 그래프 이기 때문에 연결되어있는 형식이 다양해서 0, 2, 3, 1 도 맞고, 0, 1, 2, 3도 맞음
+
     return visited
-
 # 테스트 케이스
 if __name__ == "__main__":
     # 그래프 생성
