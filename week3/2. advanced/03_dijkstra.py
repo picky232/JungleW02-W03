@@ -75,35 +75,26 @@ def dijkstra(n: int, edges: list, start: int) -> list:
     start: 출발 정점
     반환: 길이 n 의 거리 리스트 (도달 불가 = float('inf'))
     """
-    # TODO: 인접 리스트 graph 구성 (graph[u] = [(v, w), ...])
-    if n < 2:
-        return [start]
     graph = {}
-    for u, v, w in edges:
-        if u not in graph:
-            graph[u] = []
-        if v not in graph:
-            graph[v] = []
-        graph[u].append((v, w))
-    # print(graph)
-    # TODO: dist 를 INF 로 초기화하고 dist[start] = 0
-    dist = [0] + [INF] * (n-1)
-    # TODO: 우선순위 큐(heapq)로 BFS-like 최단경로 탐색
-    que = [(0, start)]
-    while que:
-        # print(que)
-        # print(dist)
-        d, u = heapq.heappop(que)
-        if d > dist[u]: 
-            continue
-        for v, w in graph[u]:
-            if dist[u] + w < dist[v]:
-                dist[v] = dist[u] + w
-                heapq.heappush(que, (dist[v], v))
-    # TODO: dist 반환
+    for i in range(n):
+        graph[i] = []
+    for u,v,w in edges: # u랑 이어진 노드 v, 둘사이의 거리 w graph의 u안에 저장
+        graph[u].append((v,w))
+    dist = [float('inf')]*n # 최단 거리 담을 리스트 생성
+    # 거리 리스트의 초기값을 inf로 터무니 없이 큰값으로 설정
+    dist[start] = 0 # 시작값 초기화
+    queue = [(0, start)] # 거리, 시작 값
+    while queue:
+        d, u = heapq.heappop(queue) # 거리, 현재 정점 값 - 최소힙에 담긴 값중 가중치가 가장 작은거 부터 불러옴
+        # d:거리 보다 현재 u까지의 거리가 더 작으면
+        # 최선의 선택임으로 다시 돌아감
+        if dist[u] < d: # 큐에서 새로 가져온 거리, 현재 위치 값이 이전 정보인지 확인
+            continue # 이전 정보라면 다시 되돌아감
+        for v, w in graph[u]: # 연결된 원소, 가중치
+            if dist[u]+w < dist[v]: # 연결된 원소의 자리까지 가중치 + 가중치
+                dist[v] = dist[u] + w # 연결된 원소의 가중치 = 현재 원소 가중치 + 다음 연결된 원소까지의 가중치
+                heapq.heappush(queue, (dist[v], v)) # 최소 힙에 푸쉬
     return dist
-    
-
 
 def _format(dist):
     """출력 표기를 위한 헬퍼: float('inf') 는 'INF' 로 보여줌"""
