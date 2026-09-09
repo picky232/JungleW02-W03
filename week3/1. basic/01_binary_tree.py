@@ -38,69 +38,21 @@ class TreeNode:
         self.value = value
         self.left = None
         self.right = None
-
 def preorder(root):
-    """전위 순회: 루트 → 왼쪽 → 오른쪽"""
     result = []
-    
-    # TODO: root가 None이면 빈 리스트 반환
     if root == None:
         return []
-    
-    # TODO: 루트 값 추가
-    result.append(root.value)
-    
-    # TODO: 왼쪽 서브트리 순회
-    result+=preorder(root.left)
-    # result.extend(preorder(root.left)) 이것도 가능 extend가 배열을 풀어서 원소들을 넣어줌
-    
-    # TODO: 오른쪽 서브트리 순회
-    result+=preorder(root.right)
-    
+    result.append(root.value) # 루트 result에 먼저 넣고
+    result += preorder(root.left) # 왼쪽부터 순회
+    result += preorder(root.right) # 그 후 오른쪽 순회
+     
     return result
 
 def inorder(root):
-    """중위 순회: 왼쪽 → 루트 → 오른쪽"""
-    result = []
-    
-    # TODO: root가 None이면 빈 리스트 반환
-    if root == None:
-        return []
-    
-    # TODO: 왼쪽 서브트리 순회
-    result += inorder(root.left)
-    # print(result)
-    
-    # TODO: 루트 값 추가
-    result.append(root.value)
-    # print(result)
-    
-    # TODO: 오른쪽 서브트리 순회
-    result+=inorder(root.right)
-    # print(result)
-    
-    return result
+    pass
 
 def postorder(root):
-    """후위 순회: 왼쪽 → 오른쪽 → 루트"""
-    result = []
-    
-    # TODO: root가 None이면 빈 리스트 반환
-    if root == None:
-        return []
-    # TODO: 왼쪽 서브트리 순회
-    result.extend(postorder(root.left))
-    
-    # TODO: 오른쪽 서브트리 순회
-    result.extend(postorder(root.right))
-    # print(result)
-    
-    # TODO: 루트 값 추가
-    # print(root.value)
-    result.append(root.value)
-    
-    return result
-
+    pass
 # 테스트 케이스
 if __name__ == "__main__":
     # 트리 생성:
