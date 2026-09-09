@@ -50,21 +50,19 @@ def search_bst(root, target):
     Returns:
         True/False
     """
-    # TODO: root가 None이면 False 반환
-    if root == None:
+    # 이빈 탐색 트리 방식으로 탐색해서 
+    # 리프노드에 도달했는데 못찼은거면 원소가 없는거임
+    if root == None: 
         return False
-    # print(root.value)
-    # TODO: 값을 찾으면 True 반환
-    ## target이 작으면 왼쪽 서브트리에서 검색
-    ## target이 크면 오른쪽 서브트리에서 검색
     if root.value == target:
         return True
-    if root.value > target:
-        return search_bst(root.left, target) # 왼쪽노드로 이동 후 탐색
-    if root.value < target:
-        return search_bst(root.right, target) # 오른쪽 노드로 이동후 탐색
-    
-    
+    if root.value < target: # 현재 노드 value보다 target이 더 큼
+        # print("right:",root.value) 
+        return search_bst(root.right, target) # 오른쪽으로 이동
+        
+    if root.value > target: # 현재 노드 value보다 target이 더 작음
+        # print("left:", root.value)
+        return search_bst(root.left, target) # 왼쪽으로 이동
 
 # 테스트 케이스
 if __name__ == "__main__":
