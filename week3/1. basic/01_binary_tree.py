@@ -38,7 +38,7 @@ class TreeNode:
         self.value = value
         self.left = None
         self.right = None
-def preorder(root):
+def preorder(root): # 전위 탐색
     result = []
     if root == None:
         return []
@@ -48,11 +48,26 @@ def preorder(root):
      
     return result
 
-def inorder(root):
-    pass
+def inorder(root): # 중위 순회
+    result = []
+    if root == None:
+        return []
+    result += inorder(root.left) # 왼쪽 끝까지 탐색
+    result.append(root.value) # 왼쪽 노드 결과에 넣기
+    result += inorder(root.right) # 오른쪽 탐색
 
-def postorder(root):
-    pass
+    return result
+    
+
+def postorder(root): # 후위 탐색
+    result = []
+    if root == None:
+        return []
+    result += postorder(root.left) # 왼쪽 탐색
+    result += postorder(root.right) # 오른쪽 탐색
+    result.append(root.value) # 양쪽 탐색후 삽입
+    return result
+
 # 테스트 케이스
 if __name__ == "__main__":
     # 트리 생성:
