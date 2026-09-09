@@ -37,14 +37,16 @@ def select_meetings(meetings):
         return 0
     
     # TODO: 종료 시간 기준으로 정렬
-    for i in range(len(meetings)):
-        for j in range(i, len(meetings)):
-            if meetings[i][1] > meetings[j][1]:
-                meetings[i], meetings[j] = meetings[j], meetings[i]
+    # for i in range(len(meetings)):
+    #     for j in range(i, len(meetings)):
+    #         if meetings[i][1] > meetings[j][1]:
+    #             meetings[i], meetings[j] = meetings[j], meetings[i]
+    meetings.sort(key=lambda x:x[1]) # O(n log n) 시간복잡도를 사용함
 
     # print(meetings)
     
     selected = []
+    selected.sort()
     
     # TODO: 첫 번째 회의 선택
     selected.append(meetings[0])
